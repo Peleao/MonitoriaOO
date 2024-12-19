@@ -24,10 +24,14 @@ public class Jogo {
     
     public void iniciar() {
         escolherPersonagem();
+        System.out.println("");
         configurarMonstros();
         lutarContraMonstros();
+        System.out.println("");
         visitarLoja2();
+        System.out.println("");
         receberRecompensa();
+        System.out.println("");
         configurarChefao();
         lutarContraChefao();
     }
@@ -64,6 +68,7 @@ public class Jogo {
             combater(monstro);
             
             if (i < monstros.size() - 1) {
+                System.out.println("");
                 visitarLoja();
             }
             
@@ -76,7 +81,9 @@ public class Jogo {
     }
 
     private void combater(Monstro monstro) {
-        while (personagens.get(0).estaVivo() && monstro.estaVivo()) {            
+        while (personagens.get(0).estaVivo() && monstro.estaVivo()) {     
+            System.out.println("");
+            System.out.println("");
             System.out.println(personagens.get(0).getNome() + " possui " + personagens.get(0).getVida() + " de vida\n O monstro possui " + monstro.getVida() + " de vida");
             System.out.println("O que voce deseja fazer: 1-Atacar 2-Especial 3-Usar pocao");
             int escolha = scanner.nextInt();
