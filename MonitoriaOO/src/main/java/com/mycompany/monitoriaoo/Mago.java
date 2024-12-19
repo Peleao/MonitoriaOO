@@ -20,14 +20,63 @@ public class Mago extends Personagem {
 
     @Override
     public void atacar(Personagem alvo) {
-        if (mana >= 5) {
-            int dano = this.ataque * 1;
-            alvo.receberDano(dano);
-            this.mana -= 5;
-            System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
-        } else {
-            System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+        switch(this.artefato){
+            case 0 -> {
+                if (mana >= 5) {
+                    int dano = this.ataque * 1;
+                    alvo.receberDano(dano);
+                    this.mana -= 5;
+                    System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
+                } else {
+                    System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+                }
+            }
+            case 1 -> {
+                if (mana >= 5) {
+                    int dano = this.ataque + 5;
+                    alvo.receberDano(dano);
+                    this.mana -= 5;
+                    System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
+                } else {
+                    System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+                }
+            }
+            case 2 -> {
+                if (mana >= 5) {
+                    int dano = this.ataque;
+                    alvo.receberDano(dano);
+                    this.mana -= 5;
+                    alvo.chanceCongelado();
+                    System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
+                } else {
+                    System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+                }
+            }
+            case 3 -> {
+                if (mana >= 5) {
+                    int dano = this.ataque;
+                    alvo.receberDano(dano);
+                    this.mana -= 5;
+                    this.setVida(vida + (dano/10));
+                    System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
+                } else {
+                    System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+                }
+            }
+            case 4 -> {
+                if (mana >= 5) {
+                    int dano = this.ataque;
+                    alvo.receberDano(dano);
+                    this.mana -= 5;
+                    alvo.chanceEnvenenado();
+                    System.out.println(this.nome + " lanca um feitico contra " + alvo.getNome() + " causando " + dano + " de dano.");
+                } else {
+                    System.out.println(this.nome + " nao tem mana suficiente para atacar.");
+                }
+            }
         }
+        
+        
     }
     
     @Override
@@ -51,6 +100,14 @@ public class Mago extends Personagem {
     }
     public void setMana(int mana) {
         this.mana = mana; 
+    }
+
+    @Override
+    public void especialChefao(Personagem alvo) {
+        setMana(mana + 40);
+        setVida(this.vida + 20);
+        alvo.receberDano(mana);
+        System.out.println(this.nome + " usou seu especial recebendo 40 de mana, se curando em 20 e causando " + mana + " de dano");
     }
 
     

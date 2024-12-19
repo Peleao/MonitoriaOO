@@ -31,4 +31,9 @@ public class Monstro extends Personagem {
             System.out.println("O especial já foi usado");
         }
     }
+
+    @Override
+    public void especialChefao(Personagem alvo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
